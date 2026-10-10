@@ -208,14 +208,16 @@
         /* Highlighted Big All-Caps Name */
         .name-title {
             font-family: 'Pacifico', cursive;
-            font-size: clamp(4rem, 15vw, 6rem);
-            line-height: 1;
+            font-size: clamp(3.8rem, 13vw, 5.5rem);
+            line-height: 1.25;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ffffff 15%, var(--metallic-light-pink) 45%, var(--metallic-hot-pink) 85%, #ffb3d9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 35px rgba(255, 0, 127, 1));
-            margin: 5px 0 45px;
+            margin: 5px 0 12px;
+            padding-right: 15px; /* Ensures the trailing cursive loop of Y is fully visible */
+            overflow: visible;
         }
 
         .birthday-age-tag {
