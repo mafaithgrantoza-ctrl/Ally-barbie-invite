@@ -17,8 +17,8 @@
             --metallic-light-pink: #ff66b2;
             --barbie-gold: #ffd700;
             --barbie-silver: #f5f5f5;
-            --glass-card: rgba(42, 0, 24, 0.82);
-            --glass-border: rgba(255, 102, 178, 0.55);
+            --glass-card: rgba(42, 0, 24, 0.88);
+            --glass-border: rgba(255, 102, 178, 0.6);
         }
 
         * {
@@ -38,6 +38,27 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* Fixed Barbie Side Border Background Element */
+        .fixed-barbie-bg {
+            position: fixed;
+            left: -20px;
+            bottom: 0;
+            width: 140px;
+            max-height: 85vh;
+            object-fit: contain;
+            pointer-events: none;
+            z-index: 1;
+            filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.7));
+            opacity: 0.85;
+        }
+
+        @media (min-width: 768px) {
+            .fixed-barbie-bg {
+                width: 220px;
+                left: 0;
+            }
         }
 
         /* Welcome Opening Curtain Overlay */
@@ -69,7 +90,7 @@
             font-size: clamp(2.2rem, 8vw, 4rem);
             color: var(--metallic-light-pink);
             margin-bottom: 15px;
-            text-shadow: 0 0 25px rgba(255, 0, 127, 0.9);
+            text-shadow: 0 0 30px rgba(255, 0, 127, 1);
             animation: pulseGlow 2s infinite ease-in-out;
         }
 
@@ -93,12 +114,18 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 0 40px rgba(255, 0, 127, 0.8);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.9);
+            animation: bounceBtn 2s infinite;
+        }
+
+        @keyframes bounceBtn {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); box-shadow: 0 0 50px rgba(255, 0, 127, 1); }
         }
 
         @keyframes pulseGlow {
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255,0,127,0.6)); }
-            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(255,0,127,1)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 40px rgba(255,0,127,1)); }
         }
 
         /* Glitzy Diamond Sparkle Canvas */
@@ -109,7 +136,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         /* Top Corner Floating Music Player */
@@ -133,7 +160,7 @@
             font-size: 0.7rem;
             color: var(--metallic-light-pink);
             font-weight: 700;
-            display: none; /* hidden on small mobile to save space */
+            display: none;
         }
 
         .top-music-player audio {
@@ -150,8 +177,8 @@
         /* Page Layout Container */
         .page-container {
             position: relative;
-            z-index: 2;
-            max-width: 600px; /* Optimized strictly for mobile phone view width */
+            z-index: 3;
+            max-width: 550px;
             margin: 0 auto;
             padding: 30px 15px;
             opacity: 0;
@@ -167,7 +194,7 @@
         /* Header Celebration Tag */
         .celebration-header {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .invite-tag {
@@ -178,18 +205,19 @@
             color: var(--barbie-gold);
             font-weight: 800;
             margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         /* Highlighted Big All-Caps Name */
         .name-title {
             font-family: 'Pacifico', cursive;
-            font-size: clamp(4.5rem, 16vw, 6.5rem);
+            font-size: clamp(4rem, 15vw, 6rem);
             line-height: 1;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ffffff 15%, var(--metallic-light-pink) 45%, var(--metallic-hot-pink) 85%, #ffb3d9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.95));
+            filter: drop-shadow(0 0 35px rgba(255, 0, 127, 1));
             margin: 5px 0 10px;
         }
 
@@ -202,49 +230,34 @@
             display: inline-block;
             padding: 6px 20px;
             border-radius: 50px;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 25px;
         }
 
-        /* Visual Showcase: Barbie Border + Slideshow side-by-side or stacked */
-        .visual-showcase {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .barbie-border-img {
-            flex: 1;
-            max-width: 48%;
-            max-height: 380px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.9));
-            animation: floatGlow 4s ease-in-out infinite;
-        }
-
         /* Slideshow Container */
         .slideshow-container {
-            flex: 1;
-            max-width: 48%;
-            height: 260px;
-            background: rgba(0,0,0,0.5);
+            width: 100%;
+            height: 320px;
+            background: rgba(0,0,0,0.65);
             border: 2px solid var(--metallic-light-pink);
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.7);
+            margin-bottom: 30px;
         }
 
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             transform: scale(1.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .slide.active {
@@ -255,12 +268,22 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Shows entire photo fully without cropping */
         }
 
-        @keyframes floatGlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .photo-year-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255, 0, 127, 0.85);
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 20px;
+            border: 1px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 5;
         }
 
         /* Countdown Timer */
@@ -278,7 +301,7 @@
             border-radius: 12px;
             min-width: 70px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
         }
 
         .countdown-box span {
@@ -286,7 +309,7 @@
             font-size: 1.6rem;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 10px var(--metallic-hot-pink);
+            text-shadow: 0 0 12px var(--metallic-hot-pink);
         }
 
         .countdown-box label {
@@ -304,7 +327,7 @@
             border-radius: 20px;
             padding: 25px 20px;
             margin-bottom: 30px;
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.5);
         }
 
         .details-stack {
@@ -327,7 +350,7 @@
             border: 1px solid var(--metallic-light-pink);
             padding: 12px;
             border-radius: 14px;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
         }
 
         .detail-text h4 {
@@ -356,7 +379,6 @@
             text-align: center;
         }
 
-        /* Posh Glam Button */
         .btn-glam {
             display: inline-block;
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
@@ -366,7 +388,7 @@
             border-radius: 50px;
             text-decoration: none;
             border: 2px solid var(--metallic-light-pink);
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.85rem;
@@ -379,7 +401,7 @@
             border: 2px solid var(--glass-border);
             border-radius: 20px;
             padding: 30px 20px;
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.5);
             text-align: center;
             margin-bottom: 40px;
         }
@@ -389,7 +411,7 @@
             font-size: 2.2rem;
             margin-bottom: 20px;
             color: var(--metallic-light-pink);
-            text-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
         }
 
         .rsvp-form {
@@ -440,7 +462,7 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
             margin-top: 10px;
             width: 100%;
         }
@@ -465,7 +487,7 @@
             text-align: center;
             max-width: 380px;
             width: 100%;
-            box-shadow: 0 0 50px rgba(255, 0, 127, 0.9);
+            box-shadow: 0 0 60px rgba(255, 0, 127, 1);
             border: 2px solid var(--metallic-hot-pink);
         }
 
@@ -475,25 +497,12 @@
             color: var(--metallic-light-pink);
             margin-bottom: 12px;
         }
-
-        /* Floating Party Icons */
-        .party-icon {
-            position: absolute;
-            font-size: 1.8rem;
-            color: var(--barbie-gold);
-            opacity: 0.8;
-            animation: floatUp 6s infinite ease-in-out;
-            z-index: 3;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-            50% { transform: translateY(-25px) rotate(10deg); opacity: 1; }
-            100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-        }
     </style>
 </head>
 <body>
+
+    <!-- Fixed Barbie Side Border (Stays in place during scroll) -->
+    <img src="Barbie_2-removebg-preview.png" alt="Barbie Side Border" class="fixed-barbie-bg">
 
     <!-- Top Corner Floating Music Player -->
     <div class="top-music-player">
@@ -524,25 +533,45 @@
             <div class="birthday-age-tag">✨ Turning 7 Years Old! ✨</div>
         </div>
 
-        <!-- Visual Showcase: Barbie Border & Cool Slideshow -->
-        <div class="visual-showcase">
-            <img src="Barbie_2-removebg-preview.png" alt="Barbie Princess" class="barbie-border-img">
-            
-            <div class="slideshow-container" id="slideshow">
-                <!-- Slides generated from your photo list -->
-                <div class="slide active"><img src="IMG_20260131_091206.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20260117_183127.jpg" alt="Ally"></div>
-                <div class="slide"><img src="28665067-e6e9-4f8c-b39c-ec9a22ca0441.jpeg" alt="Ally"></div>
-                <div class="slide"><img src="a7bcb918-e9c0-4eda-afaa-9a8e55c41c88.jpeg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20251205_220754.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20251205_220908.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20251029_181752.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20241117_172548_400.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20241031_103616_007.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20231222_104112.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20221206_114354.jpg" alt="Ally"></div>
-                <div class="slide"><img src="IMG_20201227_133821.jpg" alt="Ally"></div>
-            </div>
+        <!-- Chronological Photo Slideshow (2020 to 2026) -->
+        <div class="slideshow-container" id="slideshow">
+            <div class="slide active"><img src="IMG_20201227_133821.jpg" alt="Ally 2020"><div class="photo-year-badge">2020</div></div>
+            <div class="slide"><img src="IMG_20210130_215510.jpg" alt="Ally 2021"><div class="photo-year-badge">2021</div></div>
+            <div class="slide"><img src="IMG_20220313_171016.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220405_191654.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220411_085900.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220524_111323.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220528_122105.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220605_225036.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20220906_140011.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20221205_175915.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20221205_195553.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20221206_114333.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20221206_114354.jpg" alt="Ally 2022"><div class="photo-year-badge">2022</div></div>
+            <div class="slide"><img src="IMG_20230429_151211.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20230805_210811.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20230916_155244.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20230917_091441.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20231028_101829.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20231116_095118.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20231214_103459.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20231222_104112.jpg" alt="Ally 2023"><div class="photo-year-badge">2023</div></div>
+            <div class="slide"><img src="IMG_20240106_164248.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20240117_090336.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20240526_162235_851.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20240617_141109_662.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20240707_121225_973.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20241031_103616_007.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20241117_172548_400.jpg" alt="Ally 2024"><div class="photo-year-badge">2024</div></div>
+            <div class="slide"><img src="IMG_20250414_084731_594.jpg" alt="Ally 2025"><div class="photo-year-badge">2025</div></div>
+            <div class="slide"><img src="IMG_20250509_111309_673.jpg" alt="Ally 2025"><div class="photo-year-badge">2025</div></div>
+            <div class="slide"><img src="IMG_20251029_181752.jpg" alt="Ally 2025"><div class="photo-year-badge">2025</div></div>
+            <div class="slide"><img src="IMG_20251205_220754.jpg" alt="Ally 2025"><div class="photo-year-badge">2025</div></div>
+            <div class="slide"><img src="IMG_20251205_220908.jpg" alt="Ally 2025"><div class="photo-year-badge">2025</div></div>
+            <div class="slide"><img src="a7bcb918-e9c0-4eda-afaa-9a8e55c41c88.jpeg" alt="Ally"></div>
+            <div class="slide"><img src="28665067-e6e9-4f8c-b39c-ec9a22ca0441.jpeg" alt="Ally"></div>
+            <div class="slide"><img src="IMG_20260117_183127.jpg" alt="Ally 2026"><div class="photo-year-badge">2026</div></div>
+            <div class="slide"><img src="IMG_20260131_091206.jpg" alt="Ally 2026"><div class="photo-year-badge">2026</div></div>
         </div>
 
         <!-- Countdown Timer -->
@@ -634,7 +663,6 @@
     </div>
 
     <script>
-        /* Open Invitation Curtain & Force Audio */
         function openInvitation() {
             const overlay = document.getElementById('welcome-overlay');
             const container = document.getElementById('pageContainer');
@@ -654,7 +682,7 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 3500); // Changes photo every 3.5 seconds with smooth transition
+        setInterval(nextSlide, 3500);
 
         /* Real-Time Countdown */
         const eventDate = new Date("December 6, 2026 14:00:00").getTime();
