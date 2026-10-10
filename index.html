@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ally's 7th Barbie Birthday Glam Bash!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ALLY'S 7TH BARBIE BIRTHDAY BASH</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -12,14 +12,13 @@
     <style>
         :root {
             --barbie-bg-dark: #2a0018;
-            --barbie-bg-vibrant: #800040;
             --metallic-hot-pink: #ff007f;
             --metallic-magenta: #e6005c;
             --metallic-light-pink: #ff66b2;
             --barbie-gold: #ffd700;
             --barbie-silver: #f5f5f5;
-            --glass-card: rgba(42, 0, 24, 0.75);
-            --glass-border: rgba(255, 102, 178, 0.5);
+            --glass-card: rgba(42, 0, 24, 0.82);
+            --glass-border: rgba(255, 102, 178, 0.55);
         }
 
         * {
@@ -67,7 +66,7 @@
 
         .curtain-title {
             font-family: 'Pacifico', cursive;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.2rem, 8vw, 4rem);
             color: var(--metallic-light-pink);
             margin-bottom: 15px;
             text-shadow: 0 0 25px rgba(255, 0, 127, 0.9);
@@ -75,11 +74,11 @@
         }
 
         .curtain-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             color: var(--barbie-gold);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             font-weight: 700;
         }
 
@@ -87,20 +86,14 @@
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             color: #fff;
             border: 2px solid var(--metallic-light-pink);
-            padding: 18px 45px;
-            font-size: 1.1rem;
+            padding: 16px 38px;
+            font-size: 1rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             box-shadow: 0 0 40px rgba(255, 0, 127, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .open-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 60px rgba(255, 0, 127, 1);
         }
 
         @keyframes pulseGlow {
@@ -108,7 +101,7 @@
             50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(255,0,127,1)); }
         }
 
-        /* Glitzy Diamond & Pink Glitter Canvas */
+        /* Glitzy Diamond Sparkle Canvas */
         #glitter-canvas {
             position: fixed;
             top: 0;
@@ -119,16 +112,51 @@
             z-index: 1;
         }
 
+        /* Top Corner Floating Music Player */
+        .top-music-player {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+            background: rgba(42, 0, 24, 0.9);
+            backdrop-filter: blur(12px);
+            border: 2px solid var(--metallic-hot-pink);
+            border-radius: 30px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .top-music-player span {
+            font-size: 0.7rem;
+            color: var(--metallic-light-pink);
+            font-weight: 700;
+            display: none; /* hidden on small mobile to save space */
+        }
+
+        .top-music-player audio {
+            height: 28px;
+            width: 110px;
+            accent-color: var(--metallic-hot-pink);
+        }
+
+        @media (min-width: 600px) {
+            .top-music-player span { display: inline-block; }
+            .top-music-player audio { width: 140px; }
+        }
+
         /* Page Layout Container */
         .page-container {
             position: relative;
             z-index: 2;
-            max-width: 1300px;
+            max-width: 600px; /* Optimized strictly for mobile phone view width */
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 15px;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
         }
 
         .page-container.visible {
@@ -136,216 +164,195 @@
             transform: translateY(0);
         }
 
-        /* Music Bar Header */
-        .music-bar {
-            background: rgba(42, 0, 24, 0.85);
-            backdrop-filter: blur(15px);
-            border: 2px solid var(--metallic-hot-pink);
-            border-radius: 50px;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            max-width: 480px;
-            margin: 0 auto 30px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+        /* Header Celebration Tag */
+        .celebration-header {
+            text-align: center;
+            margin-bottom: 15px;
         }
 
-        .music-bar span {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--metallic-light-pink);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .music-bar audio {
-            height: 32px;
-            width: 100%;
-            accent-color: var(--metallic-hot-pink);
-        }
-
-        /* Posh Split Hero Section with Side Barbie Border */
-        .hero-split {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            min-height: 75vh;
-            margin-bottom: 40px;
-        }
-
-        .hero-text-side {
-            flex: 1.3;
-            text-align: left;
-            animation: fadeInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Full Height Side Barbie Image Border */
-        .hero-photo-side {
-            flex: 0.9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            animation: fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .hero-photo-side img {
-            width: 100%;
-            max-width: 480px;
-            max-height: 700px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.95)) drop-shadow(0 0 80px rgba(255, 102, 178, 0.7));
-            animation: poshFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes poshFloat {
-            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 40px rgba(255, 0, 127, 0.95)) drop-shadow(0 0 80px rgba(255, 102, 178, 0.7)); }
-            50% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 0 55px rgba(255, 0, 127, 1)) drop-shadow(0 0 95px rgba(255, 153, 204, 0.9)); }
-        }
-
-        /* Dolly Barbie Typography */
         .invite-tag {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: var(--barbie-gold);
-            margin-bottom: 12px;
             font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 5px;
         }
 
+        /* Highlighted Big All-Caps Name */
         .name-title {
             font-family: 'Pacifico', cursive;
-            font-size: clamp(4rem, 9vw, 7.5rem);
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 20%, var(--metallic-light-pink) 50%, var(--metallic-hot-pink) 85%, #ffb3d9 100%);
+            font-size: clamp(4.5rem, 16vw, 6.5rem);
+            line-height: 1;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 15%, var(--metallic-light-pink) 45%, var(--metallic-hot-pink) 85%, #ffb3d9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 35px rgba(255, 0, 127, 0.95));
-            margin-bottom: 12px;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.95));
+            margin: 5px 0 10px;
         }
 
         .birthday-age-tag {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: #fff;
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             border: 2px solid var(--metallic-light-pink);
             display: inline-block;
-            padding: 8px 24px;
+            padding: 6px 20px;
             border-radius: 50px;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
-            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        /* Visual Showcase: Barbie Border + Slideshow side-by-side or stacked */
+        .visual-showcase {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .barbie-border-img {
+            flex: 1;
+            max-width: 48%;
+            max-height: 380px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.9));
+            animation: floatGlow 4s ease-in-out infinite;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            flex: 1;
+            max-width: 48%;
+            height: 260px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--metallic-light-pink);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+            transform: scale(1.05);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         /* Countdown Timer */
         .countdown-container {
             display: flex;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
         .countdown-box {
             background: rgba(30, 0, 15, 0.85);
             border: 1.5px solid var(--glass-border);
-            box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.3), 0 0 20px rgba(255, 0, 127, 0.4);
-            padding: 14px 20px;
-            border-radius: 14px;
-            min-width: 85px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            min-width: 70px;
             text-align: center;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
         }
 
         .countdown-box span {
             display: block;
-            font-size: 2.1rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 12px var(--metallic-hot-pink);
+            text-shadow: 0 0 10px var(--metallic-hot-pink);
         }
 
         .countdown-box label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--metallic-light-pink);
         }
 
-        /* Party Details Bar (One Row Desktop) */
+        /* Party Details Card */
         .details-card {
             background: var(--glass-card);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
             border: 2px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 35px;
-            width: 100%;
-            margin-bottom: 45px;
-            box-shadow: 0 0 45px rgba(255, 0, 127, 0.4);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.4);
         }
 
-        .details-row {
+        .details-stack {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 18px;
         }
 
         .detail-item {
             display: flex;
             align-items: center;
-            gap: 16px;
-            flex: 1;
-            min-width: 230px;
+            gap: 15px;
+            text-align: left;
         }
 
         .detail-item i {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--barbie-gold);
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             border: 1px solid var(--metallic-light-pink);
-            padding: 16px;
-            border-radius: 16px;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
+            padding: 12px;
+            border-radius: 14px;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
         }
 
         .detail-text h4 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             color: var(--metallic-light-pink);
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .detail-text p {
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #fff;
-            letter-spacing: 0.5px;
         }
 
         .venue-address {
             text-align: center;
-            margin-top: 20px;
-            font-size: 1.05rem;
+            margin-top: 15px;
+            font-size: 0.95rem;
             color: var(--barbie-silver);
-            letter-spacing: 1px;
-            font-weight: 400;
         }
 
         .map-btn-container {
-            margin-top: 28px;
+            margin-top: 20px;
             text-align: center;
         }
 
@@ -355,102 +362,87 @@
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             color: #fff;
             font-weight: 800;
-            padding: 15px 36px;
+            padding: 14px 30px;
             border-radius: 50px;
             text-decoration: none;
             border: 2px solid var(--metallic-light-pink);
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
-            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.9rem;
-        }
-
-        .btn-glam:hover {
-            transform: translateY(-4px) scale(1.05);
-            background: linear-gradient(135deg, #ff1493, #ff007f);
-            box-shadow: 0 0 50px rgba(255, 0, 127, 1);
+            font-size: 0.85rem;
         }
 
         /* RSVP Section */
         .rsvp-section {
             background: var(--glass-card);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
             border: 2px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 45px 35px;
-            width: 100%;
-            box-shadow: 0 0 45px rgba(255, 0, 127, 0.4);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.4);
             text-align: center;
+            margin-bottom: 40px;
         }
 
         .rsvp-section h2 {
             font-family: 'Pacifico', cursive;
-            font-size: 2.8rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: var(--metallic-light-pink);
-            text-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
+            text-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
         }
 
         .rsvp-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            max-width: 580px;
-            margin: 0 auto;
+            gap: 15px;
+            text-align: left;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            text-align: left;
         }
 
         .form-group label {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
             font-weight: 700;
             color: var(--metallic-light-pink);
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .form-control {
-            padding: 15px 18px;
+            padding: 13px 15px;
             border-radius: 12px;
             border: 2px solid rgba(255, 102, 178, 0.5);
             background: rgba(30, 0, 15, 0.8);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
-            transition: all 0.3s ease;
         }
 
-        .form-control:focus {
-            border-color: var(--metallic-hot-pink);
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+        .guest-split {
+            display: flex;
+            gap: 10px;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             color: #fff;
             border: 2px solid var(--metallic-light-pink);
-            padding: 16px;
-            font-size: 1.1rem;
+            padding: 15px;
+            font-size: 1rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.8);
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 50px rgba(255, 0, 127, 1);
+            letter-spacing: 2px;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.8);
+            margin-top: 10px;
+            width: 100%;
         }
 
         /* Success Modal */
@@ -462,31 +454,32 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .modal-content {
             background: #2a0018;
             color: #fff;
-            padding: 40px;
-            border-radius: 24px;
+            padding: 35px 20px;
+            border-radius: 20px;
             text-align: center;
-            max-width: 440px;
-            width: 90%;
-            box-shadow: 0 0 60px rgba(255, 0, 127, 0.9);
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.9);
             border: 2px solid var(--metallic-hot-pink);
         }
 
         .modal-content h3 {
             font-family: 'Pacifico', cursive;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--metallic-light-pink);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        /* Floating Balloon & Cake Icons */
+        /* Floating Party Icons */
         .party-icon {
             position: absolute;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--barbie-gold);
             opacity: 0.8;
             animation: floatUp 6s infinite ease-in-out;
@@ -495,100 +488,74 @@
 
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-            50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+            50% { transform: translateY(-25px) rotate(10deg); opacity: 1; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-        }
-
-        /* Responsive */
-        @media (max-width: 950px) {
-            .hero-split {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .hero-text-side {
-                text-align: center;
-            }
-
-            .invite-tag {
-                justify-content: center;
-            }
-
-            .countdown-container {
-                justify-content: center;
-            }
-
-            .hero-photo-side img {
-                max-height: 480px;
-            }
-
-            .details-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .music-bar {
-                flex-direction: column;
-                gap: 10px;
-                border-radius: 20px;
-                padding: 15px;
-            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Corner Floating Music Player -->
+    <div class="top-music-player">
+        <span><i class="fa-solid fa-music"></i> Barbie Girl</span>
+        <audio controls loop autoplay id="bgAudio">
+            <source src="The Aqua - Barbie Girl.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
     <!-- Welcome Opening Curtain Overlay -->
     <div id="welcome-overlay">
-        <div style="max-width: 600px;">
+        <div style="max-width: 500px; padding: 0 20px;">
             <h2 class="curtain-title">Ally's 7th Barbie Birthday Bash</h2>
             <p class="curtain-subtitle">👑 Tap to Enter the VIP Barbie Party 👑</p>
             <button class="open-btn" onclick="openInvitation()">Open Invitation ✨</button>
         </div>
     </div>
 
-    <!-- Metallic Hot Pink & Diamond Sparkle Canvas -->
+    <!-- Glitter Canvas -->
     <canvas id="glitter-canvas"></canvas>
 
     <div class="page-container" id="pageContainer">
-        <!-- Barbie Song Music Bar (Linked to Your Exact MP3 File) -->
-        <div class="music-bar">
-            <span><i class="fa-solid fa-music"></i> Barbie Girl:</span>
-            <audio controls loop autoplay id="bgAudio">
-                <source src="The Aqua - Barbie Girl.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+        <!-- Header Celebration -->
+        <div class="celebration-header">
+            <div class="invite-tag"><i class="fa-solid fa-crown"></i> You're invited to a Barbie Celebration <i class="fa-solid fa-crown"></i></div>
+            <h1 class="name-title">ALLY</h1>
+            <div class="birthday-age-tag">✨ Turning 7 Years Old! ✨</div>
         </div>
 
-        <!-- Posh Split Hero Section -->
-        <section class="hero-split">
-            <!-- Left Side: Editorial Typography & Countdown -->
-            <div class="hero-text-side">
-                <div class="invite-tag"><i class="fa-solid fa-crown"></i> You're Invited To A Barbie Celebration <i class="fa-solid fa-crown"></i></div>
-                <h1 class="name-title">Ally</h1>
-                <div class="birthday-age-tag">✨ Turning 7 Years Old! ✨</div>
-
-                <!-- Countdown Timer -->
-                <div class="countdown-container">
-                    <div class="countdown-box"><span id="days">00</span><label>Days</label></div>
-                    <div class="countdown-box"><span id="hours">00</span><label>Hours</label></div>
-                    <div class="countdown-box"><span id="minutes">00</span><label>Mins</label></div>
-                    <div class="countdown-box"><span id="seconds">00</span><label>Secs</label></div>
-                </div>
+        <!-- Visual Showcase: Barbie Border & Cool Slideshow -->
+        <div class="visual-showcase">
+            <img src="Barbie_2-removebg-preview.png" alt="Barbie Princess" class="barbie-border-img">
+            
+            <div class="slideshow-container" id="slideshow">
+                <!-- Slides generated from your photo list -->
+                <div class="slide active"><img src="IMG_20260131_091206.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20260117_183127.jpg" alt="Ally"></div>
+                <div class="slide"><img src="28665067-e6e9-4f8c-b39c-ec9a22ca0441.jpeg" alt="Ally"></div>
+                <div class="slide"><img src="a7bcb918-e9c0-4eda-afaa-9a8e55c41c88.jpeg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20251205_220754.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20251205_220908.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20251029_181752.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20241117_172548_400.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20241031_103616_007.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20231222_104112.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20221206_114354.jpg" alt="Ally"></div>
+                <div class="slide"><img src="IMG_20201227_133821.jpg" alt="Ally"></div>
             </div>
+        </div>
 
-            <!-- Right Side: Entire Barbie Image Serving as Side Border -->
-            <div class="hero-photo-side">
-                <i class="fa-solid fa-cake-candles party-icon" style="top: 5%; left: 10%;"></i>
-                <i class="fa-solid fa-gift party-icon" style="bottom: 10%; right: 10%; animation-delay: 2s;"></i>
-                <i class="fa-solid fa-wand-magic-sparkles party-icon" style="top: 50%; right: 2%; animation-delay: 1s; color: var(--metallic-light-pink);"></i>
-                <img src="Barbie_2-removebg-preview.png" alt="Barbie Princess Ally">
-            </div>
-        </section>
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+            <div class="countdown-box"><span id="days">00</span><label>Days</label></div>
+            <div class="countdown-box"><span id="hours">00</span><label>Hours</label></div>
+            <div class="countdown-box"><span id="minutes">00</span><label>Mins</label></div>
+            <div class="countdown-box"><span id="seconds">00</span><label>Secs</label></div>
+        </div>
 
-        <!-- Party Details Bar (One Row Desktop) -->
+        <!-- Party Details Card -->
         <section class="details-card">
-            <div class="details-row">
+            <div class="details-stack">
                 <div class="detail-item">
                     <i class="fa-solid fa-cake-candles"></i>
                     <div class="detail-text">
@@ -623,17 +590,17 @@
             </div>
         </section>
 
-        <!-- RSVP Form Section -->
+        <!-- RSVP Section -->
         <section class="rsvp-section">
-            <h2><i class="fa-solid fa-heart"></i> RSVP To Ally's 7th Birthday <i class="fa-solid fa-heart"></i></h2>
+            <h2><i class="fa-solid fa-heart"></i> RSVP To Ally's Party <i class="fa-solid fa-heart"></i></h2>
             <form class="rsvp-form" id="rsvpForm">
                 <div class="form-group">
-                    <label for="guestName">Guest Name</label>
-                    <input type="text" id="guestName" name="guestName" class="form-control" required placeholder="Enter your full name">
+                    <label for="guestName">Guest Full Name</label>
+                    <input type="text" id="guestName" name="guestName" class="form-control" required placeholder="Enter your name">
                 </div>
                 <div class="form-group">
-                    <label for="guestEmail">Email Address</label>
-                    <input type="email" id="guestEmail" name="guestEmail" class="form-control" required placeholder="yourname@domain.com">
+                    <label for="guestMobile">Mobile No.</label>
+                    <input type="tel" id="guestMobile" name="guestMobile" class="form-control" required placeholder="0912 345 6789">
                 </div>
                 <div class="form-group">
                     <label for="attendance">Will you attend?</label>
@@ -642,9 +609,15 @@
                         <option value="Regretfully Absent">💫 Regretfully Absent</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="guestCount">Number of Guests</label>
-                    <input type="number" id="guestCount" name="guestCount" class="form-control" min="1" max="5" value="1">
+                <div class="guest-split">
+                    <div class="form-group" style="flex:1;">
+                        <label for="adultCount">No. of Adults</label>
+                        <input type="number" id="adultCount" name="adultCount" class="form-control" min="1" max="10" value="1">
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label for="kidCount">No. of Kids</label>
+                        <input type="number" id="kidCount" name="kidCount" class="form-control" min="0" max="10" value="0">
+                    </div>
                 </div>
                 <button type="submit" class="submit-btn">Send RSVP ✨</button>
             </form>
@@ -655,13 +628,13 @@
     <div class="modal" id="successModal">
         <div class="modal-content">
             <h3>You're on the Guest List!</h3>
-            <p style="margin-bottom: 25px; color: var(--barbie-silver); font-size: 0.95rem;">Thank you for confirming! We can't wait to celebrate Ally's 7th birthday with you.</p>
+            <p style="margin-bottom: 20px; color: var(--barbie-silver); font-size: 0.9rem;">Thank you for confirming! We can't wait to celebrate Ally's 7th birthday with you.</p>
             <button class="btn-glam" onclick="closeModal()">Close</button>
         </div>
     </div>
 
     <script>
-        /* Open Invitation Curtain & Force Continuous Audio */
+        /* Open Invitation Curtain & Force Audio */
         function openInvitation() {
             const overlay = document.getElementById('welcome-overlay');
             const container = document.getElementById('pageContainer');
@@ -670,10 +643,18 @@
             overlay.classList.add('open');
             container.classList.add('visible');
             
-            audio.play().catch(() => {
-                console.log("Audio autoplay handled.");
-            });
+            audio.play().catch(() => {});
         }
+
+        /* Photo Slideshow Cool Cross-Fade Transition */
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 3500); // Changes photo every 3.5 seconds with smooth transition
 
         /* Real-Time Countdown */
         const eventDate = new Date("December 6, 2026 14:00:00").getTime();
@@ -697,7 +678,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        /* Metallic Pink & Diamond Sparkle Canvas */
+        /* Diamond Glitter Canvas */
         const canvas = document.getElementById("glitter-canvas");
         const ctx = canvas.getContext("2d");
         let width = canvas.width = window.innerWidth;
@@ -709,14 +690,14 @@
         });
 
         const particles = [];
-        for (let i = 0; i < 110; i++) {
+        for (let i = 0; i < 90; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 3.5 + 0.5,
-                speedY: Math.random() * -0.9 - 0.2,
-                speedX: Math.random() * 0.6 - 0.3,
-                color: ['#ff007f', '#ff66b2', '#ffffff', '#e6005c', '#ffb3d9', '#ffd700'][Math.floor(Math.random() * 6)],
+                size: Math.random() * 3 + 0.5,
+                speedY: Math.random() * -0.7 - 0.2,
+                speedX: Math.random() * 0.5 - 0.25,
+                color: ['#ff007f', '#ff66b2', '#ffffff', '#ffd700'][Math.floor(Math.random() * 4)],
                 alpha: Math.random()
             });
         }
