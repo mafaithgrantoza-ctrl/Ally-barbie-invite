@@ -97,10 +97,10 @@
         .curtain-subtitle {
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: var(--barbie-gold);
             margin-bottom: 30px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .open-btn {
@@ -620,7 +620,7 @@
             </div>
 
             <div class="venue-address">
-                50 North Diversion Road, Bagong Barrio, Caloocan City
+                North Diversion Road, Bagong Barrio, Caloocan City
             </div>
 
             <div class="map-btn-container">
@@ -640,11 +640,11 @@
                     <input type="text" id="guestName" name="guestName" class="form-control" required placeholder="Enter your name">
                 </div>
                 <div class="form-group">
-                    <label for="guestMobile">Mobile No.</label>
+                    <label for="guestMobile">Contact Number</label>
                     <input type="tel" id="guestMobile" name="guestMobile" class="form-control" required placeholder="0912 345 6789">
                 </div>
                 <div class="form-group">
-                    <label for="attendance">Will you attend?</label>
+                    <label for="attendance">Status</label>
                     <select id="attendance" name="attendance" class="form-control" required>
                         <option value="Joyfully Attending">✨ Joyfully Attending</option>
                         <option value="Regretfully Absent">💫 Regretfully Absent</option>
@@ -652,11 +652,11 @@
                 </div>
                 <div class="guest-split">
                     <div class="form-group" style="flex:1;">
-                        <label for="adultCount">No. of Adults</label>
+                        <label for="adultCount">Number of Adults</label>
                         <input type="number" id="adultCount" name="adultCount" class="form-control" min="1" max="10" value="1">
                     </div>
                     <div class="form-group" style="flex:1;">
-                        <label for="kidCount">No. of Kids</label>
+                        <label for="kidCount">Number of Kids</label>
                         <input type="number" id="kidCount" name="kidCount" class="form-control" min="0" max="10" value="0">
                     </div>
                 </div>
@@ -675,6 +675,8 @@
     </div>
 
     <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmNvhBiweplhAuqi1R1FvPf-75kJvUftrMuqvhr0F7CN2caikDXhGDFx_citFMurbM/exec";
+
         function openInvitation() {
             const overlay = document.getElementById('welcome-overlay');
             const container = document.getElementById('pageContainer');
@@ -761,14 +763,40 @@
         }
         animateGlitter();
 
-        /* RSVP Form Handler */
+        /* RSVP Form Handler with Google Sheets & Email Alert */
         const rsvpForm = document.getElementById("rsvpForm");
         const successModal = document.getElementById("successModal");
 
         rsvpForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            successModal.style.display = "flex";
-            rsvpForm.reset();
+            
+            const submitBtn = rsvpForm.querySelector('.submit-btn');
+            submitBtn.innerText = "Sending... ✨";
+            submitBtn.disabled = true;
+
+            const payload = {
+                guestName: document.getElementById('guestName').value,
+                guestMobile: document.getElementById('guestMobile').value,
+                attendance: document.getElementById('attendance').value,
+                adultCount: document.getElementById('adultCount').value,
+                kidCount: document.getElementById('kidCount').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                successModal.style.display = "flex";
+                rsvpForm.reset();
+                submitBtn.innerText = "Send RSVP ✨";
+                submitBtn.disabled = false;
+            }).catch(err => {
+                alert("Something went wrong saving your RSVP. Please try again!");
+                submitBtn.innerText = "Send RSVP ✨";
+                submitBtn.disabled = false;
+            });
         });
 
         function closeModal() {
