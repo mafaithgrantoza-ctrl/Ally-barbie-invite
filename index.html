@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allyxzandra Micaiah's Glam Barbie Birthday!</title>
+    <title>Allyxzandra Micaiah's Posh Barbie Glam Bash</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --glam-black: #0b0208;
-            --barbie-hot: #ff007f;
-            --barbie-pink: #ff1493;
-            --barbie-light: #ffb6c1;
-            --glitz-gold: #ffd700;
-            --glitz-gold-light: #fff3a0;
-            --glass-bg: rgba(255, 20, 147, 0.08);
-            --glass-border: rgba(255, 215, 0, 0.35);
+            --bg-deep: #070105;
+            --metallic-hot-pink: #ff007f;
+            --metallic-magenta: #e6005c;
+            --metallic-light-pink: #ff66b2;
+            --barbie-silver: #e0e0e0;
+            --white-sparkle: #ffffff;
+            --glass-card: rgba(255, 0, 127, 0.06);
+            --glass-border: rgba(255, 102, 178, 0.35);
         }
 
         * {
@@ -29,17 +29,18 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--glam-black);
+            background-color: var(--bg-deep);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(230, 0, 92, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(100, 0, 50, 0.15) 0%, transparent 60%);
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Fullscreen Glitter Particle Canvas */
+        /* Glitzy Diamond & Pink Glitter Canvas */
         #glitter-canvas {
             position: fixed;
             top: 0;
@@ -50,59 +51,61 @@
             z-index: 1;
         }
 
-        /* Audio Music Toggle Button */
+        /* Audio Control Button */
         .audio-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 25px;
+            right: 25px;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--glitz-gold);
-            color: var(--glitz-gold);
-            padding: 10px 18px;
+            background: rgba(10, 2, 8, 0.8);
+            backdrop-filter: blur(12px);
+            border: 2px solid var(--metallic-hot-pink);
+            color: var(--metallic-light-pink);
+            padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
             transition: all 0.3s ease;
         }
 
         .audio-toggle:hover {
-            background: var(--glitz-gold);
-            color: #000;
+            background: var(--metallic-hot-pink);
+            color: #fff;
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.8);
         }
 
-        /* Main Page Layout Wrapper */
-        .page-wrapper {
+        /* Page Layout Container */
+        .page-container {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
-        /* Split Screen Hero Section */
+        /* Posh Split Hero Section */
         .hero-split {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
-            min-height: 75vh;
-            margin-bottom: 40px;
+            gap: 50px;
+            min-height: 80vh;
+            margin-bottom: 50px;
         }
 
-        .hero-content {
+        .hero-text-side {
             flex: 1.2;
             text-align: left;
         }
 
-        /* Side Photo - No Frame */
+        /* Entire Photo on Side - No Frame, Soft Metallic Halo */
         .hero-photo-side {
             flex: 0.8;
             display: flex;
@@ -113,84 +116,85 @@
 
         .hero-photo-side img {
             max-width: 100%;
-            max-height: 580px;
+            max-height: 600px;
             object-fit: contain;
-            filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.6)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3));
-            animation: floatGlow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.7)) drop-shadow(0 0 60px rgba(230, 0, 92, 0.4));
+            animation: poshFloat 5s ease-in-out infinite;
         }
 
-        @keyframes floatGlow {
-            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.6)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.3)); }
-            50% { transform: translateY(-12px); filter: drop-shadow(0 0 35px rgba(255, 0, 127, 0.9)) drop-shadow(0 0 55px rgba(255, 215, 0, 0.5)); }
+        @keyframes poshFloat {
+            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.7)) drop-shadow(0 0 60px rgba(230, 0, 92, 0.4)); }
+            50% { transform: translateY(-12px); filter: drop-shadow(0 0 45px rgba(255, 0, 127, 0.95)) drop-shadow(0 0 80px rgba(255, 102, 178, 0.6)); }
         }
 
-        /* Glam Typography */
-        .subtitle {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.3rem;
+        /* Posh Editorial Typography */
+        .invite-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--glitz-gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            margin-bottom: 10px;
+            letter-spacing: 6px;
+            color: var(--metallic-light-pink);
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .name-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.05;
-            background: linear-gradient(135deg, #ffffff 0%, var(--barbie-light) 40%, var(--barbie-hot) 80%, var(--glitz-gold) 100%);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5.2rem);
+            font-weight: 800;
+            font-style: italic;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 10%, var(--metallic-light-pink) 40%, var(--metallic-hot-pink) 75%, #ffb3d9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(255, 0, 127, 0.7));
+            filter: drop-shadow(0 0 25px rgba(255, 0, 127, 0.6));
             margin-bottom: 25px;
         }
 
-        /* Countdown Boxes */
+        /* Countdown Timer */
         .countdown-container {
             display: flex;
             gap: 15px;
-            margin: 25px 0 35px;
+            margin-top: 30px;
         }
 
         .countdown-box {
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid var(--barbie-hot);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-            padding: 12px 18px;
-            border-radius: 16px;
-            min-width: 80px;
+            background: rgba(12, 2, 10, 0.85);
+            border: 1.5px solid var(--glass-border);
+            box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.2), 0 0 20px rgba(255, 0, 127, 0.3);
+            padding: 14px 20px;
+            border-radius: 14px;
+            min-width: 85px;
             text-align: center;
         }
 
         .countdown-box span {
             display: block;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 900;
-            color: var(--glitz-gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            color: #fff;
+            text-shadow: 0 0 12px var(--metallic-hot-pink);
         }
 
         .countdown-box label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--barbie-light);
+            letter-spacing: 2px;
+            color: var(--metallic-light-pink);
         }
 
-        /* Party Details Bar (One Row) */
+        /* Party Details Bar (One Row Desktop) */
         .details-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            background: var(--glass-card);
+            backdrop-filter: blur(25px);
             border: 2px solid var(--glass-border);
             border-radius: 24px;
-            padding: 30px;
+            padding: 35px;
             width: 100%;
-            margin-bottom: 40px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.25), inset 0 0 15px rgba(255, 215, 0, 0.1);
+            margin-bottom: 45px;
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.25);
         }
 
         .details-row {
@@ -204,87 +208,92 @@
         .detail-item {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
             flex: 1;
-            min-width: 220px;
+            min-width: 230px;
         }
 
         .detail-item i {
-            font-size: 1.8rem;
-            color: var(--glitz-gold);
-            background: rgba(255, 0, 127, 0.2);
-            border: 1px solid var(--glitz-gold);
-            padding: 14px;
+            font-size: 1.7rem;
+            color: #fff;
+            background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
+            border: 1px solid var(--metallic-light-pink);
+            padding: 16px;
             border-radius: 16px;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
         }
 
         .detail-text h4 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--barbie-light);
+            letter-spacing: 2.5px;
+            color: var(--metallic-light-pink);
+            margin-bottom: 3px;
         }
 
         .detail-text p {
             font-size: 1.15rem;
-            font-weight: 800;
+            font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
         }
 
         .venue-address {
             text-align: center;
-            margin-top: 18px;
-            font-size: 1rem;
-            color: var(--barbie-light);
-            letter-spacing: 0.5px;
+            margin-top: 20px;
+            font-size: 1.05rem;
+            color: var(--barbie-silver);
+            letter-spacing: 1px;
+            font-weight: 400;
         }
 
         .map-btn-container {
-            margin-top: 25px;
+            margin-top: 28px;
             text-align: center;
         }
 
-        /* Glam Button Styling */
+        /* Posh Glam Button */
         .btn-glam {
             display: inline-block;
-            background: linear-gradient(135deg, var(--glitz-gold), #ffaa00);
-            color: #000;
+            background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
+            color: #fff;
             font-weight: 800;
-            padding: 14px 32px;
+            padding: 15px 36px;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            border: 2px solid var(--metallic-light-pink);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
         }
 
         .btn-glam:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+            transform: translateY(-3px) scale(1.04);
+            background: linear-gradient(135deg, #ff1493, #ff007f);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.9);
         }
 
         /* RSVP Section */
         .rsvp-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            background: var(--glass-card);
+            backdrop-filter: blur(25px);
             border: 2px solid var(--glass-border);
             border-radius: 24px;
-            padding: 40px 30px;
+            padding: 45px 35px;
             width: 100%;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 0.25);
             text-align: center;
         }
 
         .rsvp-section h2 {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
             margin-bottom: 25px;
-            color: var(--glitz-gold);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
             letter-spacing: 1px;
         }
 
@@ -292,7 +301,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            max-width: 550px;
+            max-width: 580px;
             margin: 0 auto;
         }
 
@@ -303,19 +312,19 @@
         }
 
         .form-group label {
-            font-size: 0.9rem;
-            margin-bottom: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
             font-weight: 700;
-            color: var(--barbie-light);
-            letter-spacing: 1px;
+            color: var(--metallic-light-pink);
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         .form-control {
-            padding: 14px 18px;
+            padding: 15px 18px;
             border-radius: 12px;
-            border: 2px solid rgba(255, 215, 0, 0.4);
-            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 102, 178, 0.4);
+            background: rgba(10, 2, 8, 0.75);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
@@ -324,29 +333,29 @@
         }
 
         .form-control:focus {
-            border-color: var(--barbie-hot);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            border-color: var(--metallic-hot-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, var(--barbie-hot), var(--barbie-pink));
+            background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             color: #fff;
-            border: 2px solid var(--glitz-gold);
+            border: 2px solid var(--metallic-light-pink);
             padding: 16px;
             font-size: 1.1rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+            letter-spacing: 2.5px;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .submit-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+            box-shadow: 0 0 45px rgba(255, 0, 127, 0.9);
         }
 
         /* Success Modal */
@@ -354,40 +363,41 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(5, 0, 4, 0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background: #120210;
+            background: #0f020c;
             color: #fff;
-            padding: 35px;
+            padding: 40px;
             border-radius: 24px;
             text-align: center;
-            max-width: 420px;
+            max-width: 440px;
             width: 90%;
-            box-shadow: 0 0 40px rgba(255, 0, 127, 0.6);
-            border: 2px solid var(--glitz-gold);
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.7);
+            border: 2px solid var(--metallic-hot-pink);
         }
 
         .modal-content h3 {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2rem;
-            color: var(--glitz-gold);
-            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--metallic-light-pink);
+            margin-bottom: 15px;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 900px) {
+        /* Responsive */
+        @media (max-width: 950px) {
             .hero-split {
                 flex-direction: column-reverse;
                 text-align: center;
-                gap: 20px;
+                gap: 30px;
             }
 
-            .hero-content {
+            .hero-text-side {
                 text-align: center;
             }
 
@@ -396,7 +406,7 @@
             }
 
             .hero-photo-side img {
-                max-height: 400px;
+                max-height: 420px;
             }
 
             .details-row {
@@ -408,20 +418,20 @@
 </head>
 <body>
 
-    <!-- Gold & Barbie Pink Glitter Canvas -->
+    <!-- Metallic Hot Pink & Diamond Sparkle Canvas -->
     <canvas id="glitter-canvas"></canvas>
 
-    <!-- Audio Control Button -->
+    <!-- Audio Toggle Button -->
     <button class="audio-toggle" id="audioToggle">
         <i class="fa-solid fa-volume-xmark" id="audioIcon"></i> <span id="audioText">Music Off</span>
     </button>
 
-    <div class="page-wrapper">
-        <!-- Split Screen Hero Section -->
+    <div class="page-container">
+        <!-- Posh Split Hero Section -->
         <section class="hero-split">
-            <!-- Left Side: Content & Details -->
-            <div class="hero-content">
-                <div class="subtitle">✨ YOU'RE INVITED TO A GLAM BASH ✨</div>
+            <!-- Left Side: Editorial Typography & Countdown -->
+            <div class="hero-text-side">
+                <div class="invite-tag">✨ You're Invited To A Glam Bash ✨</div>
                 <h1 class="name-title">Allyxzandra Micaiah</h1>
 
                 <!-- Countdown Timer -->
@@ -450,7 +460,7 @@
                     </div>
                 </div>
                 <div class="detail-item">
-                    <i class="fa-solid fa-clock"></i>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
                     <div class="detail-text">
                         <h4>Time</h4>
                         <p>2:00 PM PST</p>
@@ -508,7 +518,7 @@
     <div class="modal" id="successModal">
         <div class="modal-content">
             <h3>You're on the Guest List!</h3>
-            <p style="margin-bottom: 20px;">Thank you for confirming! Get ready for a fabulous glam celebration.</p>
+            <p style="margin-bottom: 25px; color: var(--barbie-silver); font-size: 0.95rem;">Thank you for confirming! We can't wait to celebrate this fabulous milestone with you.</p>
             <button class="btn-glam" onclick="closeModal()">Close</button>
         </div>
     </div>
@@ -536,7 +546,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        /* Gold & Pink Floating Glitters Animation */
+        /* Metallic Pink & Diamond Sparkle Canvas */
         const canvas = document.getElementById("glitter-canvas");
         const ctx = canvas.getContext("2d");
         let width = canvas.width = window.innerWidth;
@@ -548,14 +558,14 @@
         });
 
         const particles = [];
-        for (let i = 0; i < 90; i++) {
+        for (let i = 0; i < 100; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                size: Math.random() * 3.5 + 0.8,
-                speedY: Math.random() * -0.8 - 0.2,
-                speedX: Math.random() * 0.6 - 0.3,
-                color: ['#ffd700', '#ff007f', '#ffffff', '#fff3a0', '#ff1493'][Math.floor(Math.random() * 5)],
+                size: Math.random() * 3 + 0.5,
+                speedY: Math.random() * -0.7 - 0.2,
+                speedX: Math.random() * 0.5 - 0.25,
+                color: ['#ff007f', '#ff66b2', '#ffffff', '#e6005c', '#ffb3d9'][Math.floor(Math.random() * 5)],
                 alpha: Math.random()
             });
         }
@@ -570,7 +580,7 @@
                 if (p.x > width) p.x = 0;
 
                 ctx.fillStyle = p.color;
-                ctx.globalAlpha = Math.abs(Math.sin(Date.now() * 0.003 + p.alpha));
+                ctx.globalAlpha = Math.abs(Math.sin(Date.now() * 0.0025 + p.alpha));
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -627,7 +637,7 @@
                 osc.type = 'triangle';
                 osc.frequency.value = notes[Math.floor(Math.random() * notes.length)];
                 
-                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
                 
                 osc.connect(gain);
