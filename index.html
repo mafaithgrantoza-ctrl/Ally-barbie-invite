@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allyxzandra Micaiah's Posh Barbie Glam Bash</title>
+    <title>Ally's 7th Barbie Birthday Glam Bash!</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,6 +16,7 @@
             --metallic-hot-pink: #ff007f;
             --metallic-magenta: #e6005c;
             --metallic-light-pink: #ff66b2;
+            --barbie-gold: #ffd700;
             --barbie-silver: #f5f5f5;
             --glass-card: rgba(42, 0, 24, 0.75);
             --glass-border: rgba(255, 102, 178, 0.5);
@@ -40,7 +41,7 @@
             position: relative;
         }
 
-        /* Opening Curtain / Gate Overlay */
+        /* Welcome Opening Curtain Overlay */
         #welcome-overlay {
             position: fixed;
             top: 0;
@@ -65,21 +66,21 @@
         }
 
         .curtain-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 5vw, 4rem);
-            font-style: italic;
-            color: #fff;
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--metallic-light-pink);
             margin-bottom: 15px;
-            text-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+            text-shadow: 0 0 25px rgba(255, 0, 127, 0.9);
             animation: pulseGlow 2s infinite ease-in-out;
         }
 
         .curtain-subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            color: var(--metallic-light-pink);
+            color: var(--barbie-gold);
             margin-bottom: 35px;
+            font-weight: 700;
         }
 
         .open-btn {
@@ -146,7 +147,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 15px;
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto 35px;
             box-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
             animation: slideDown 1s ease;
@@ -179,7 +180,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
+            gap: 40px;
             min-height: 75vh;
             margin-bottom: 50px;
         }
@@ -190,12 +191,7 @@
             animation: fadeInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeInLeft {
-            from { transform: translateX(-60px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Entire Photo on Side - No Frame, Dramatic Entrance Animation */
+        /* Full Height Side Barbie Image Border */
         .hero-photo-side {
             flex: 0.8;
             display: flex;
@@ -205,14 +201,10 @@
             animation: fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeInRight {
-            from { transform: translateX(60px) scale(0.95); opacity: 0; }
-            to { transform: translateX(0) scale(1); opacity: 1; }
-        }
-
         .hero-photo-side img {
-            max-width: 100%;
-            max-height: 580px;
+            width: 100%;
+            max-width: 420px;
+            max-height: 650px;
             object-fit: contain;
             filter: drop-shadow(0 0 35px rgba(255, 0, 127, 0.9)) drop-shadow(0 0 70px rgba(255, 102, 178, 0.6));
             animation: poshFloat 5s ease-in-out infinite;
@@ -223,37 +215,52 @@
             50% { transform: translateY(-14px) scale(1.02); filter: drop-shadow(0 0 50px rgba(255, 0, 127, 1)) drop-shadow(0 0 90px rgba(255, 153, 204, 0.85)); }
         }
 
-        /* Posh Editorial Typography */
+        /* Dolly Barbie Typography */
         .invite-tag {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            color: var(--metallic-light-pink);
-            margin-bottom: 15px;
-            font-weight: 600;
+            letter-spacing: 5px;
+            color: var(--barbie-gold);
+            margin-bottom: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .name-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 6vw, 5.2rem);
-            font-weight: 800;
-            font-style: italic;
-            text-transform: capitalize;
-            letter-spacing: 1px;
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(3.8rem, 8vw, 6.5rem);
             line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 15%, var(--metallic-light-pink) 45%, var(--metallic-hot-pink) 80%, #ffb3d9 100%);
+            background: linear-gradient(135deg, #ffffff 20%, var(--metallic-light-pink) 50%, var(--metallic-hot-pink) 85%, #ffb3d9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.8));
-            margin-bottom: 25px;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 127, 0.9));
+            margin-bottom: 10px;
+        }
+
+        .birthday-age-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
+            border: 2px solid var(--metallic-light-pink);
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         /* Countdown Timer */
         .countdown-container {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
         .countdown-box {
@@ -327,8 +334,8 @@
         }
 
         .detail-item i {
-            font-size: 1.7rem;
-            color: #fff;
+            font-size: 1.8rem;
+            color: var(--barbie-gold);
             background: linear-gradient(135deg, var(--metallic-hot-pink), var(--metallic-magenta));
             border: 1px solid var(--metallic-light-pink);
             padding: 16px;
@@ -401,13 +408,11 @@
         }
 
         .rsvp-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-style: italic;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8rem;
             margin-bottom: 25px;
-            color: #fff;
+            color: var(--metallic-light-pink);
             text-shadow: 0 0 20px rgba(255, 0, 127, 0.9);
-            letter-spacing: 1px;
         }
 
         .rsvp-form {
@@ -501,11 +506,25 @@
         }
 
         .modal-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-style: italic;
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
             color: var(--metallic-light-pink);
             margin-bottom: 15px;
+        }
+
+        /* Floating Balloon Animations */
+        .balloon {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--metallic-light-pink);
+            opacity: 0.7;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-40px) rotate(15deg); opacity: 1; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
         }
 
         /* Responsive */
@@ -520,12 +539,16 @@
                 text-align: center;
             }
 
+            .invite-tag {
+                justify-content: center;
+            }
+
             .countdown-container {
                 justify-content: center;
             }
 
             .hero-photo-side img {
-                max-height: 420px;
+                max-height: 480px;
             }
 
             .details-row {
@@ -546,8 +569,8 @@
     <!-- Welcome Opening Curtain Overlay -->
     <div id="welcome-overlay">
         <div style="max-width: 600px;">
-            <h2 class="curtain-title">Allyxzandra Micaiah's<br>Barbie Glam Bash</h2>
-            <p class="curtain-subtitle">✨ Tap to Enter the VIP Experience ✨</p>
+            <h2 class="curtain-title">Ally's 7th Barbie Birthday Bash</h2>
+            <p class="curtain-subtitle">👑 Tap to Enter the VIP Barbie Party 👑</p>
             <button class="open-btn" onclick="openInvitation()">Open Invitation ✨</button>
         </div>
     </div>
@@ -558,9 +581,9 @@
     <div class="page-container" id="pageContainer">
         <!-- Barbie Song Music Bar -->
         <div class="music-bar">
-            <span><i class="fa-solid fa-music"></i> Barbie Vibe:</span>
+            <span><i class="fa-solid fa-music"></i> Barbie Girl Soundtrack:</span>
             <audio controls loop id="bgAudio">
-                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
@@ -569,8 +592,9 @@
         <section class="hero-split">
             <!-- Left Side: Editorial Typography & Countdown -->
             <div class="hero-text-side">
-                <div class="invite-tag">✨ You're Invited To A Glam Bash ✨</div>
-                <h1 class="name-title">Allyxzandra Micaiah</h1>
+                <div class="invite-tag"><i class="fa-solid fa-crown"></i> You're Invited To A Barbie Celebration <i class="fa-solid fa-crown"></i></div>
+                <h1 class="name-title">Ally</h1>
+                <div class="birthday-age-tag">✨ Turning 7 Years Old! ✨</div>
 
                 <!-- Countdown Timer -->
                 <div class="countdown-container">
@@ -581,9 +605,11 @@
                 </div>
             </div>
 
-            <!-- Right Side: Entire Unframed Photo -->
+            <!-- Right Side: Entire Unframed Barbie Princess Image -->
             <div class="hero-photo-side">
-                <img src="28665067-e6e9-4f8c-b39c-ec9a22ca0441-removebg-preview.png" alt="Allyxzandra Micaiah">
+                <i class="fa-solid fa-cake-candles balloon" style="top: 10%; left: 5%;"></i>
+                <i class="fa-solid fa-gift balloon" style="bottom: 15%; right: 5%; animation-delay: 2s;"></i>
+                <img src="Barbie_2-removebg-preview.png" alt="Barbie Princess Ally">
             </div>
         </section>
 
@@ -591,7 +617,7 @@
         <section class="details-card">
             <div class="details-row">
                 <div class="detail-item">
-                    <i class="fa-solid fa-calendar-star"></i>
+                    <i class="fa-solid fa-cake-candles"></i>
                     <div class="detail-text">
                         <h4>Date</h4>
                         <p>December 6, 2026</p>
@@ -626,7 +652,7 @@
 
         <!-- RSVP Form Section -->
         <section class="rsvp-section">
-            <h2>RSVP To The Glam Party</h2>
+            <h2><i class="fa-solid fa-heart"></i> RSVP To Ally's Party <i class="fa-solid fa-heart"></i></h2>
             <form class="rsvp-form" id="rsvpForm">
                 <div class="form-group">
                     <label for="guestName">Guest Name</label>
@@ -656,7 +682,7 @@
     <div class="modal" id="successModal">
         <div class="modal-content">
             <h3>You're on the Guest List!</h3>
-            <p style="margin-bottom: 25px; color: var(--barbie-silver); font-size: 0.95rem;">Thank you for confirming! We can't wait to celebrate this fabulous milestone with you.</p>
+            <p style="margin-bottom: 25px; color: var(--barbie-silver); font-size: 0.95rem;">Thank you for confirming! We can't wait to celebrate Ally's 7th birthday with you.</p>
             <button class="btn-glam" onclick="closeModal()">Close</button>
         </div>
     </div>
@@ -671,7 +697,6 @@
             overlay.classList.add('open');
             container.classList.add('visible');
             
-            // Attempt to play music automatically on tap
             audio.play().catch(() => {
                 console.log("Audio autoplay prevented by browser policy.");
             });
